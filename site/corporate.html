@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Move It for Teams — Workplace Wellness via Google Admin Console</title>
+    <meta name="description" content="Deploy Move It to your entire workforce in minutes using Google Admin Console. Custom branding, custom activities, zero per-user setup.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Success state for form */
+        #form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        #form-success .success-icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+
+        #form-success h3 {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        #form-success p {
+            font-size: 16px;
+            color: var(--mid);
+        }
+
+        /* Error message */
+        .form-error {
+            display: none;
+            color: #c0392b;
+            font-size: 14px;
+            margin-top: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <a href="/" class="logo">Move <span>It</span></a>
+        <ul class="nav-links">
+            <li><a href="/" class="back-link">&larr; Back to moveit.work</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="corp-hero">
+    <div class="container">
+        <div class="section-label">Move It for Teams</div>
+        <h1 class="corp-hero-title">Workplace wellness,<br><span>zero friction.</span></h1>
+        <p class="corp-hero-sub">Deploy a branded movement extension to your entire workforce in minutes &mdash; via Google Admin Console. Staff get it automatically. No installs. No IT tickets.</p>
+        <div class="hero-actions">
+            <a href="#get-access" class="btn btn-primary">Get Early Access</a>
+            <a href="/" class="btn btn-outline">Learn about Move It</a>
+        </div>
+    </div>
+</section>
+
+<!-- How it works -->
+<section id="how-it-works">
+    <div class="container">
+        <div class="section-label">Powered by Google Admin Console</div>
+        <h2 class="section-title">From signup to deployed in under 10 minutes</h2>
+        <p class="section-sub">No software to install on your end. Chrome does the heavy lifting.</p>
+
+        <div class="corp-steps">
+            <div class="corp-step card">
+                <div class="corp-step-num">1</div>
+                <h3>Sign up</h3>
+                <p>Create your Move It for Teams account and fill in your branding details.</p>
+            </div>
+            <div class="corp-step card">
+                <div class="corp-step-num">2</div>
+                <h3>Customise</h3>
+                <p>Add your company name, logo, brand colour, and custom exercise list.</p>
+            </div>
+            <div class="corp-step card">
+                <div class="corp-step-num">3</div>
+                <h3>Get your policy</h3>
+                <p>Receive a JSON policy file to paste into Google Admin Console.</p>
+            </div>
+            <div class="corp-step card">
+                <div class="corp-step-num">4</div>
+                <h3>Deploy</h3>
+                <p>Chrome pushes your branded extension to all staff browsers automatically.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature grid -->
+<section id="features">
+    <div class="container">
+        <div class="section-label">What you can customise</div>
+        <h2 class="section-title">Your brand. Your activities. Your rules.</h2>
+        <p class="section-sub">Move It for Teams gives you full control over how the extension appears and behaves for your staff.</p>
+
+        <div class="features-grid">
+            <div class="feature-card card">
+                <span class="feature-icon">&#x1F3E2;</span>
+                <div>
+                    <h3>Company Name</h3>
+                    <p>Your company name appears in the activity prompt, so staff know it&rsquo;s an official workplace wellness tool &mdash; not a personal extension they installed.</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <span class="feature-icon">&#x1F5BC;</span>
+                <div>
+                    <h3>Company Logo</h3>
+                    <p>Replace the default Nouns image with your own logo or mascot. Keeps the experience on-brand and reinforces company identity with every activity.</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <span class="feature-icon">&#x1F3A8;</span>
+                <div>
+                    <h3>Brand Colour</h3>
+                    <p>Swap the default pink accent for your company&rsquo;s primary colour. The extension buttons, highlights, and activity card all update to match.</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <span class="feature-icon">&#x1F4CB;</span>
+                <div>
+                    <h3>Custom Activities</h3>
+                    <p>Replace the default exercise list with your own. Company-specific stretches, mindfulness prompts, standing meeting reminders &mdash; whatever fits your culture.</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <span class="feature-icon">&#x2699;</span>
+                <div>
+                    <h3>Google Admin Rollout</h3>
+                    <p>No per-user setup. No asking staff to install anything. Paste a policy JSON into Google Admin Console and Chrome deploys the config to every managed device silently.</p>
+                </div>
+            </div>
+            <div class="feature-card card">
+                <span class="feature-icon">&#x1F512;</span>
+                <div>
+                    <h3>Policy-Enforced Config</h3>
+                    <p>Your branding is set via <code>chrome.storage.managed</code> — a read-only policy layer that users can&rsquo;t change. Your brand stays consistent across every desk.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Interest form -->
+<section class="form-section" id="get-access">
+    <div class="container">
+        <div class="section-label" style="color: rgba(255,255,255,0.7); text-align:center;">Join the waitlist</div>
+        <h2 class="section-title">Get Early Access</h2>
+        <p class="section-sub">We&rsquo;re rolling out Move It for Teams to a limited group of companies first. Get in touch and we&rsquo;ll be in contact shortly.</p>
+
+        <div class="interest-form">
+            <form id="contact-form" method="POST">
+
+                <div class="form-row">
+                    <label for="name">Your name</label>
+                    <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Work email</label>
+                    <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="company">Company name</label>
+                    <input type="text" id="company" name="company" placeholder="Acme Corp" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="team-size">Team size</label>
+                    <select id="team-size" name="team_size" required>
+                        <option value="" disabled selected>Select team size</option>
+                        <option value="10-50">10 &ndash; 50 people</option>
+                        <option value="51-200">51 &ndash; 200 people</option>
+                        <option value="201-500">201 &ndash; 500 people</option>
+                        <option value="500+">500+ people</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-submit">Get Early Access</button>
+                <p class="form-error" id="form-error">Something went wrong. Please try again or email us directly.</p>
+            </form>
+
+            <div id="form-success">
+                <div class="success-icon">&#x1F44B;</div>
+                <h3>You&rsquo;re on the list!</h3>
+                <p>We&rsquo;ll be in touch shortly about getting Move It for Teams set up at your company.</p>
+            </div>
+
+            <p class="form-note">No spam. We&rsquo;ll only contact you about Move It for Teams.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <div class="container">
+        <div class="section-label">Common questions</div>
+        <h2 class="section-title">FAQ</h2>
+
+        <div class="faq-list">
+            <div class="faq-item card">
+                <h3>Do staff need to install anything?</h3>
+                <p>No. Once you add the policy to Google Admin Console, Chrome automatically configures the Move It extension on all managed devices. Staff don&rsquo;t need to do anything &mdash; the extension was already available to them on the Chrome Web Store, and the policy just applies your branding on top of it silently.</p>
+            </div>
+            <div class="faq-item card">
+                <h3>Can we use our own exercises?</h3>
+                <p>Yes. You can provide a completely custom activity list &mdash; as many items as you like. When a custom list is set, it completely replaces the default Move It activity library. You could include company-specific wellness prompts, standing desk reminders, mindfulness exercises, or anything else your team responds to.</p>
+            </div>
+            <div class="faq-item card">
+                <h3>What does it cost?</h3>
+                <p>Pricing is being finalised. Early access customers will receive a preferential rate. Register your interest above and we&rsquo;ll share details as soon as they&rsquo;re ready. Move It for individual users will always remain free.</p>
+            </div>
+            <div class="faq-item card">
+                <h3>Does it require a Google Workspace account?</h3>
+                <p>Yes &mdash; rolling out the branded policy via Google Admin Console requires Google Workspace (or a legacy G Suite account). The underlying Move It extension works in any Chrome browser, but the automatic corporate branding deployment requires managed Chrome.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="/">moveit.work</a>
+            <a href="https://chromewebstore.google.com/detail/move-it/kopilngnmfklhhjocdfdlokmodibcbmk" target="_blank">Chrome Web Store</a>
+            <a href="https://chromewebstore.google.com/detail/move-it/kopilngnmfklhhjocdfdlokmodibcbmk/reviews" target="_blank">Leave a Review</a>
+            <a href="/privacy">Privacy Policy</a>
+        </div>
+        <p>&copy; 2025 Move It &bull; moveit.work</p>
+    </div>
+</footer>
+
+<script>
+    var form = document.getElementById('contact-form');
+    var success = document.getElementById('form-success');
+    var error = document.getElementById('form-error');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        error.style.display = 'none';
+
+        var payload = {
+            name:      document.getElementById('name').value,
+            email:     document.getElementById('email').value,
+            company:   document.getElementById('company').value,
+            team_size: document.getElementById('team-size').value
+        };
+
+        fetch('/api/contact', {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+        }).then(function (res) {
+            if (res.ok) {
+                form.style.display = 'none';
+                success.style.display = 'block';
+            } else {
+                error.style.display = 'block';
+            }
+        }).catch(function () {
+            error.style.display = 'block';
+        });
+    });
+</script>
+
+</body>
+</html>

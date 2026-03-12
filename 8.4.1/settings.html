@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Move It Settings</title>
+    <link rel="stylesheet" href="style/fonts.css" type="text/css">
+    <link rel="stylesheet" href="style/settings.css" type="text/css">
+    <style>
+        /* Clearfix: make each menu-item contain its floated children */
+        div#settings-menu div#menu div.menu-item::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+
+        /* Make the menu box expand to contain all children */
+        div#settings-menu div#menu {
+            overflow: hidden;
+        }
+
+        /* Auto-height items (e.g. days row) */
+        div#settings-menu div#menu div.menu-item.menu-item-auto {
+            height: auto;
+            min-height: 30px;
+            padding-bottom: 6px;
+        }
+
+        /* Days row — floated right like other settings, auto height */
+        #work-days-row {
+            float: right;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 4px;
+            padding: 2px 0 0;
+            max-width: 55%;
+        }
+
+        .day-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 11px;
+            cursor: pointer;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            padding: 2px 5px 3px;
+        }
+
+        .day-label input {
+            margin: 2px 0 0;
+            cursor: pointer;
+        }
+
+        /* Completion count — no box border */
+        #completion-display {
+            border: none !important;
+            line-height: 25px;
+        }
+    </style>
+    <script src="js/activities.js"></script>
+    <script src="js/activity_popup.js"></script>
+    <script src="js/settings.js"></script>
+</head>
+
+<body>
+    <div id="app-logo">
+        <h1>Move It</h1>
+    </div>
+    <div id="settings-menu">
+        <div id="menu-title">
+            <h3>Settings</h3>
+        </div>
+        <div id="menu">
+            <!-- Completion counter -->
+            <div class="menu-item">
+                <div class="menu-label">Done today</div>
+                <div class="menu-setting">
+                    <span id="completion-display">0</span>
+                </div>
+            </div>
+
+            <!-- Exercise interval -->
+            <div class="menu-item">
+                <div class="menu-label">
+                    Exercise Interval
+                </div>
+                <div class="menu-setting">
+                    <select id="time-options"></select>
+                </div>
+            </div>
+
+            <!-- Enable/disable -->
+            <div class="menu-item">
+                <div class="menu-label">
+                    Enabled
+                </div>
+                <div class="menu-setting">
+                    <input id="enabled-option" type="checkbox">
+                </div>
+            </div>
+
+            <!-- Work hours toggle -->
+            <div class="menu-item">
+                <div class="menu-label">
+                    Work Hours Only
+                </div>
+                <div class="menu-setting">
+                    <input id="work-hours-enabled" type="checkbox">
+                </div>
+            </div>
+
+            <!-- Work hours sub-settings -->
+            <div id="work-hours-options" style="display:none;">
+                <div class="menu-item">
+                    <div class="menu-label">Start</div>
+                    <div class="menu-setting">
+                        <select id="work-hours-start"></select>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-label">End</div>
+                    <div class="menu-setting">
+                        <select id="work-hours-end"></select>
+                    </div>
+                </div>
+                <div class="menu-item menu-item-auto">
+                    <div class="menu-label">Days</div>
+                    <div id="work-days-row"></div>
+                </div>
+            </div>
+
+            <!-- Corporate link -->
+            <div class="menu-item">
+                <div class="menu-label">
+                    For your workplace?
+                </div>
+                <div class="menu-setting">
+                    <a href="https://www.moveit.work/corporate" target="_blank">Move It for Teams</a>
+                </div>
+            </div>
+
+            <!-- Review link -->
+            <div class="menu-item">
+                <div class="menu-label">
+                    Enjoying Move It?
+                </div>
+                <div class="menu-setting">
+                    <a href="https://chromewebstore.google.com/detail/move-it/kopilngnmfklhhjocdfdlokmodibcbmk/reviews"
+                        target="_blank">Leave a review &#x2B50;</a>
+                </div>
+            </div>
+
+            <!-- Nouns link -->
+            <div class="menu-item">
+                <div class="menu-label">
+                    What are Nouns?
+                </div>
+                <div class="menu-setting">
+                    <a href="https://nouns.center/?utm_source=move_it_extension&utm_medium=referral&utm_campaign=move_it_settings&utm_content=learn_more_link&utm_term=mrrobbo"
+                        target="_blank">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

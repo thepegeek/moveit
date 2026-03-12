@@ -1,0 +1,103 @@
+body {
+    min-width: 370px;
+    min-height: 370px;
+    overflow-x: hidden;
+    background: #D4D7E1;
+    font-family: 'Londrina Solid';
+    font-weight: 300;
+    font-size: 16px;
+    color: white;
+}
+
+div#app-logo {
+    width: 70%;
+    margin-left: 15%;
+    position: relative;
+    z-index: 1;
+}
+
+div#app-logo h1 {
+    font-family: 'Londrina Solid';
+    font-weight: 400;
+    font-size: 3rem;
+    text-align: center;
+}
+
+div#settings-menu {
+    position: relative;
+    margin: 0 5px;
+}
+
+div#settings-menu div#menu-title > * {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+div#settings-menu  div#menu {
+    background: #FF6687;
+    position: static;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    padding: 10px 15px 5px;
+}
+
+div#settings-menu div#menu div.menu-item {
+    height: 30px;
+    margin: 5px 0;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+div#settings-menu div#menu div.menu-item div.menu-label {
+    position: relative;
+    float: left;
+    width: 50%;
+    left: 0px;
+    top: 2px;
+}
+
+div#settings-menu div#menu div.menu-item div.menu-setting {
+    position: relative;
+    float: right;
+    width: 50%;
+    top: 0px;
+}
+
+div#settings-menu div#menu div.menu-item div.menu-setting > * {
+    float: right;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    height: 25px;
+    padding: 0 5px;
+}
+
+div#settings-menu div#menu div.menu-item div.menu-setting input#enabled-option {
+    width: 18px;
+}
+
+div#brand-logo {
+    position: absolute;
+    width: 29%;
+    margin-top: 30px;
+    margin-left: 35%;
+    bottom: 5%;
+}
+
+div#brand-logo img {
+    width: 100%;
+}
+
+/* Added styles for hyperlink */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover,
+a:visited,
+a:focus {
+    color: white;
+    text-decoration: none;
+}
