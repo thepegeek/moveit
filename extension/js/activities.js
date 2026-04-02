@@ -176,9 +176,9 @@ var ACTIVITY_INT_OPT = "activity_interval",
     COMPLETIONS_KEY_PREFIX = "completions_";
 
 // Defaults
-var ACTIVITY_INT_DEFAULT = 15,
+var ACTIVITY_INT_DEFAULT = 30,
     ENABLED_OPT_DEFAULT = true,
-    WORK_HOURS_ENABLED_DEFAULT = false,
+    WORK_HOURS_ENABLED_DEFAULT = true,
     WORK_HOURS_START_DEFAULT = 540,   // 9:00 AM in minutes from midnight
     WORK_HOURS_END_DEFAULT = 1020,    // 5:00 PM in minutes from midnight
     WORK_DAYS_DEFAULT = [1, 2, 3, 4, 5]; // Mon–Fri (0=Sun, 6=Sat)
