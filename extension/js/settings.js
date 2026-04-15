@@ -4,7 +4,7 @@ function initTimeSettings() {
     timeSelect.innerHTML = '';
 
     chrome.storage.sync.get([ACTIVITY_INT_OPT], function (items) {
-        var currInterval = items[ACTIVITY_INT_OPT];
+        var currInterval = items[ACTIVITY_INT_OPT] != null ? items[ACTIVITY_INT_OPT] : ACTIVITY_INT_DEFAULT;
 
         var time = 5;
         do {
@@ -100,7 +100,7 @@ function saveWorkDays() {
 function initWorkHoursSettings() {
     var keys = [WORK_HOURS_ENABLED_OPT, WORK_HOURS_START_OPT, WORK_HOURS_END_OPT, WORK_DAYS_OPT];
     chrome.storage.sync.get(keys, function (items) {
-        var enabled = !!items[WORK_HOURS_ENABLED_OPT];
+        var enabled = items[WORK_HOURS_ENABLED_OPT] != null ? !!items[WORK_HOURS_ENABLED_OPT] : WORK_HOURS_ENABLED_DEFAULT;
         var start = items[WORK_HOURS_START_OPT] != null ? items[WORK_HOURS_START_OPT] : WORK_HOURS_START_DEFAULT;
         var end = items[WORK_HOURS_END_OPT] != null ? items[WORK_HOURS_END_OPT] : WORK_HOURS_END_DEFAULT;
         var days = items[WORK_DAYS_OPT] || WORK_DAYS_DEFAULT;
