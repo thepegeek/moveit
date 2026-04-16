@@ -30,7 +30,7 @@
     });
 
     // Navigate between steps
-    window.goTo = function (step) {
+    function goTo(step) {
         document.getElementById('screen-' + currentStep).classList.remove('active');
         document.getElementById('dot-' + currentStep).classList.remove('active');
         document.getElementById('dot-' + currentStep).classList.add('done');
@@ -65,7 +65,7 @@
     }
 
     // Finish — save settings and tell the service worker
-    window.finish = function () {
+    function finish() {
         var interval = parseInt(document.getElementById('interval-select').value);
         var useSpecific = document.getElementById('use-specific-time').checked;
 
@@ -96,6 +96,12 @@
             window.close();
         });
     };
+
+    // Wire up buttons
+    document.getElementById('btn-start').addEventListener('click', function () { goTo(2); });
+    document.getElementById('btn-confirm').addEventListener('click', function () { goTo(3); });
+    document.getElementById('btn-back').addEventListener('click', function () { goTo(1); });
+    document.getElementById('btn-done').addEventListener('click', finish);
 
     // Init
     buildHourSelect();

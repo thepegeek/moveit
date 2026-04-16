@@ -297,7 +297,7 @@
                     <div class="how-text">Mark it done and get back to it</div>
                 </div>
             </div>
-            <button class="btn btn-primary" onclick="goTo(2)">Get set up &rarr;</button>
+            <button class="btn btn-primary" id="btn-start">Get set up &rarr;</button>
         </div>
 
         <!-- Step 2: Preferences -->
@@ -341,8 +341,8 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary" onclick="goTo(3)">Confirm &rarr;</button>
-            <button class="btn btn-ghost" onclick="goTo(1)">&larr; Back</button>
+            <button class="btn btn-primary" id="btn-confirm">Confirm &rarr;</button>
+            <button class="btn btn-ghost" id="btn-back">&larr; Back</button>
         </div>
 
         <!-- Step 3: Done -->
@@ -351,7 +351,7 @@
             <h2>You&rsquo;re all set</h2>
             <p class="sub">Here&rsquo;s what we&rsquo;ve set up for you.</p>
             <div class="summary" id="summary"></div>
-            <button class="btn btn-primary" id="done-btn" onclick="finish()">Start moving</button>
+            <button class="btn btn-primary" id="btn-done">Start moving</button>
         </div>
 
     </div>
