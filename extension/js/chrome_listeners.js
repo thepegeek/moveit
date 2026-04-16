@@ -211,14 +211,8 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
 // Set default settings on installation
 chrome.runtime.onInstalled.addListener(function (details) {
     if (details.reason === "install") {
-        var defaultSettings = {};
-        defaultSettings[ACTIVITY_INT_OPT] = ACTIVITY_INT_DEFAULT;
-        defaultSettings[ENABLED_OPT] = ENABLED_OPT_DEFAULT;
-        defaultSettings[WORK_HOURS_ENABLED_OPT] = WORK_HOURS_ENABLED_DEFAULT;
-        defaultSettings[WORK_HOURS_START_OPT] = WORK_HOURS_START_DEFAULT;
-        defaultSettings[WORK_HOURS_END_OPT] = WORK_HOURS_END_DEFAULT;
-        defaultSettings[WORK_DAYS_OPT] = WORK_DAYS_DEFAULT;
-        chrome.storage.sync.set(defaultSettings);
+        // Open onboarding tab — timer starts after user completes setup
+        chrome.tabs.create({ url: 'onboard.html' });
         sendEvent('extension_installed', { version: chrome.runtime.getManifest().version });
     } else {
         resetTimer();
@@ -226,6 +220,26 @@ chrome.runtime.onInstalled.addListener(function (details) {
             version: chrome.runtime.getManifest().version,
             previous_version: details.previousVersion || ''
         });
+    }
+});
+
+
+// Handle onboarding completion — set first alert or start normal timer
+chrome.runtime.onMessage.addListener(function (message) {
+    if (message.type !== 'ONBOARD_COMPLETE') return;
+
+    if (message.firstAlertMins !== null && message.firstAlertMins !== undefined) {
+        // Calculate minutes until the chosen time (next occurrence)
+        var now = new Date();
+        var currentMins = now.getHours() * 60 + now.getMinutes();
+        var delay = message.firstAlertMins - currentMins;
+        if (delay <= 0) delay += 1440; // Roll to next day if time already passed
+        // Store so alarm handler knows this is the first-ever alert
+        chrome.storage.local.set({ first_alert_pending: true });
+        chrome.alarms.create({ delayInMinutes: delay });
+    } else {
+        // No specific time — start interval immediately
+        setExerciseTimeInterval(message.interval);
     }
 });
 
@@ -239,16 +253,22 @@ chrome.runtime.onStartup.addListener(function () {
 
 // Capture activity alarms — check enabled + work hours before showing activity
 chrome.alarms.onAlarm.addListener(function (alarm) {
-    isEnabled(function (enabled) {
-        if (!enabled) return;
-        isInWorkHours(function (inHours) {
-            if (!inHours) {
-                resetTimer(); // Outside work hours — skip activity, keep checking
-                return;
-            }
-            forceCompleteExercise(function () {}, function () {
-                incrementCompletionCount();
-                resetTimer();
+    // If this is the scheduled first alert, clear the flag then proceed normally
+    chrome.storage.local.get(['first_alert_pending'], function (items) {
+        if (items.first_alert_pending) {
+            chrome.storage.local.remove('first_alert_pending');
+        }
+        isEnabled(function (enabled) {
+            if (!enabled) return;
+            isInWorkHours(function (inHours) {
+                if (!inHours) {
+                    resetTimer();
+                    return;
+                }
+                forceCompleteExercise(function () {}, function () {
+                    incrementCompletionCount();
+                    resetTimer();
+                });
             });
         });
     });
